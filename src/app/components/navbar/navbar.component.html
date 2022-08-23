@@ -1,1 +1,11 @@
-<p>navbar works!</p>
+<mat-toolbar>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Main Menu" class="menu-button">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+       <button routerLink="" mat-menu-item>HOME</button>
+       <button routerLink="choreList" mat-menu-item>Chores</button>
+
+    </mat-menu>
+    <span>Menu</span>
+</mat-toolbar>
