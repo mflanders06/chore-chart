@@ -1,0 +1,16 @@
+<div>Create New Job</div>
+
+<div>
+    <form [formGroup]="formGroup" (ngSubmit)="submitChore()">
+        <mat-form-field>
+            <mat-label>Job Name</mat-label>
+            <input matInput type="text" formControlName="chorename">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>Description</mat-label>
+            <input matInput type="text" formControlName="description">
+        </mat-form-field>
+        <button [disabled]="!formGroup.valid" mat-raised-button type="submit">CREATE</button>
+        <button (click)="cancel()">CANCEL</button>
+    </form>
+</div>

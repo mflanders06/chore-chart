@@ -14,13 +14,18 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/pages/home/home.component';
 import { ChoreListComponent } from './components/pages/chore-list/chore-list.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { CreateChoreComponent } from './components/modals/create-chore/create-chore.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavbarComponent,
     HomeComponent,
-    ChoreListComponent
+    ChoreListComponent,
+    CreateChoreComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +35,11 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     MatMenuModule,
     MatIconModule,
     BrowserAnimationsModule,
-    MatTableModule
+    MatTableModule,
+    MatFormFieldModule,
+    MatDialogModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

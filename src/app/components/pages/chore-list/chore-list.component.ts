@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ChoreService } from 'src/app/services/chore.service';
-import { Chores } from '../../chores';
+import { Chore } from '../../chore';
+import { CreateChoreComponent } from '../../modals/create-chore/create-chore.component';
 
 @Component({
   selector: 'app-chore-list',
@@ -8,19 +10,36 @@ import { Chores } from '../../chores';
   styleUrls: ['./chore-list.component.scss']
 })
 export class ChoreListComponent implements OnInit {
-  chores: Chores[] = []
+  chores: Chore[] = []
   displayedColumns: string[] = ["chorename", "description"]
+  modalHeight: string = '80%';
+  modalWidth: string = '80%';
 
-  constructor(private choreList: ChoreService) { }
+  constructor(
+    private choreService: ChoreService,
+    public dialog: MatDialog
+    ) { }
 
   ngOnInit(): void {
     this.getChoreList();
   }
 
   getChoreList(){
-    this.choreList.getChores().subscribe(chores => {
+    this.choreService.getChores().subscribe(chores => {
       this.chores = chores
-      console.log(chores);
+    })
+  }
+
+  newJob(){
+    const dialogRef = this.dialog.open(CreateChoreComponent, { height: this.modalHeight, width: this.modalWidth })
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+      if(result.chorename){
+        this.choreService.addChore(result).subscribe(() => {
+          this.getChoreList()
+        })
+      }
     })
   }
 

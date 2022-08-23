@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { Chores } from '../components/chores';
+import { Chore } from '../components/chore';
 
 @Injectable({
   providedIn: 'root'
@@ -11,8 +11,12 @@ export class ChoreService {
 
   constructor(private http: HttpClient) { }
 
-  getChores(): Observable<Chores[]>{
-    return this.http.get<Chores[]>(`${this.backEndUrl}api/chores`)
+  getChores(): Observable<Chore[]>{
+    return this.http.get<Chore[]>(`${this.backEndUrl}api/chores`)
+  }
+
+  addChore(chore: Chore) {
+    return this.http.post(`${this.backEndUrl}api/chores`, chore)
   }
 
 }
