@@ -1,1 +1,15 @@
-<p>chore-list works!</p>
+
+<div>
+    <table mat-table [dataSource]="chores">
+        <ng-container matColumnDef="chorename">
+            <th mat-header-cell *matHeaderCellDef> Chore </th>
+            <td mat-cell *matCellDef="let chore">{{chore.chorename}}</td>
+        </ng-container>
+        <ng-container matColumnDef="description">
+            <th mat-header-cell *matHeaderCellDef> Description </th>
+            <td mat-cell *matCellDef="let chore">{{chore.description}}</td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let chore; columns: displayedColumns;"></tr>
+    </table>
+</div>

@@ -9,6 +9,7 @@ import { Chores } from '../../chores';
 })
 export class ChoreListComponent implements OnInit {
   chores: Chores[] = []
+  displayedColumns: string[] = ["chorename", "description"]
 
   constructor(private choreList: ChoreService) { }
 
