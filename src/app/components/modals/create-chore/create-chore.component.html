@@ -24,7 +24,17 @@
                 <mat-option [value]="4">Year</mat-option>
             </mat-select>
         </mat-form-field>
+        <mat-form-field>
+            <mat-label>Active Season</mat-label>
+            <mat-select formControlName="activeSeason" name="activeSeason">
+                <mat-option *ngFor="let season of activeSeason" [value]="season.id">
+                    {{season.seasonname}}
+                </mat-option>
+
+            </mat-select>
+        </mat-form-field>
         <button [disabled]="!formGroup.valid" mat-raised-button type="submit">CREATE</button>
         <button (click)="cancel()">CANCEL</button>
     </form>
 </div>
+
