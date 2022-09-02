@@ -20,6 +20,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
+import { SeasonsConfigComponent } from './components/pages/seasons-config/seasons-config.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { MatInputModule } from '@angular/material/input';
     NavbarComponent,
     HomeComponent,
     ChoreListComponent,
-    CreateChoreComponent
+    CreateChoreComponent,
+    SeasonsConfigComponent,
   ],
   imports: [
     BrowserModule,
@@ -46,6 +48,6 @@ import { MatInputModule } from '@angular/material/input';
     MatInputModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

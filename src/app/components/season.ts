@@ -1,4 +1,6 @@
 export interface seasonList {
-    id: number,
-    seasonname: string,
+  id: number;
+  seasonname: string;
 }
+
+export interface seasonConfigList {}
