@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChoreService } from 'src/app/services/chore.service';
 import { MatDialog } from '@angular/material/dialog';
-import { seasonList } from '../../season';
+import { SeasonConfigList, SeasonList } from '../../season';
 
 @Component({
   selector: 'app-seasons-config',
@@ -9,18 +9,18 @@ import { seasonList } from '../../season';
   styleUrls: ['./seasons-config.component.scss'],
 })
 export class SeasonsConfigComponent implements OnInit {
-  constructor(private choreService: ChoreService) {}
 
-  seasons: seasonList[] = [];
+  seasons: SeasonList[] = [];
+  seasonsConfig: SeasonConfigList[] =[];
   displayedColumns: string[] = [
-    'chorename',
-    'description',
-    'cycleRate',
-    'cycleType',
+    'seasonname',
+    'activemonths',
   ];
 
+  constructor(private choreService: ChoreService) {}
+
   ngOnInit(): void {
-    this.getSeasons();
+    this.getConfigSeasons();
   }
 
   getSeasons() {
@@ -28,4 +28,11 @@ export class SeasonsConfigComponent implements OnInit {
       this.seasons = seasons;
     });
   }
+
+  getConfigSeasons() {
+    this.choreService.getConfigSeasons().subscribe((seasonList) => {
+      this.seasonsConfig = seasonList;
+    })
+  }
+
 }

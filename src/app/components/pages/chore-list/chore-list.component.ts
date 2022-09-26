@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { ChoreService } from 'src/app/services/chore.service';
 import { Chore } from '../../chore';
 import { CreateChoreComponent } from '../../modals/create-chore/create-chore.component';
-import { seasonList } from '../../season';
+import { SeasonList } from '../../season';
 
 @Component({
   selector: 'app-chore-list',
@@ -12,7 +12,7 @@ import { seasonList } from '../../season';
 })
 export class ChoreListComponent implements OnInit {
   chores: Chore[] = []
-  seasons: seasonList[] = []
+  seasons: SeasonList[] = []
   displayedColumns: string[] = ["chorename", "description", "cycleRate", "cycleType"]
   modalHeight: string = '80%';
   modalWidth: string = '80%';

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Chore, DBChoreDatum } from '../components/chore';
-import { seasonList } from '../components/season';
+import { SeasonConfigList, SeasonList } from '../components/season';
 
 @Injectable({
   providedIn: 'root'
@@ -22,8 +22,12 @@ export class ChoreService {
     return this.http.post(`${this.backEndUrl}api/chores`, chore)
   }
 
-  getSeasons(): Observable<seasonList[]>{
-    return this.http.get<seasonList[]>(`${this.backEndUrl}api/seasons`)
+  getSeasons(): Observable<SeasonList[]>{
+    return this.http.get<SeasonList[]>(`${this.backEndUrl}api/seasons`)
+  }
+
+  getConfigSeasons(): Observable<SeasonConfigList[]>{
+    return this.http.get<SeasonConfigList[]>(`${this.backEndUrl}api/seasonsConfig`)
   }
 
   getCycleType(cycleType: number): string {
