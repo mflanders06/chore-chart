@@ -17,7 +17,6 @@
         <mat-form-field>
             <mat-label>Cycle Type</mat-label>
             <mat-select formControlName="cycleType">
-                <mat-option [value]=null>None</mat-option>
                 <mat-option [value]="1">Day</mat-option>
                 <mat-option [value]="2">Week</mat-option>
                 <mat-option [value]="3">Month</mat-option>
@@ -27,6 +26,7 @@
         <mat-form-field>
             <mat-label>Active Season</mat-label>
             <mat-select formControlName="activeSeason" name="activeSeason">
+                <mat-option [value]="null">Clear Selection</mat-option>
                 <mat-option *ngFor="let season of activeSeason" [value]="season.id">
                     {{season.seasonname}}
                 </mat-option>

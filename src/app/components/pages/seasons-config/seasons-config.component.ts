@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ChoreService } from 'src/app/services/chore.service';
 import { MatDialog } from '@angular/material/dialog';
-import { SeasonConfigList, SeasonList } from '../../season';
+import { SeasonConfigList, SeasonDisplayList, SeasonList } from '../../season';
 
 @Component({
   selector: 'app-seasons-config',
@@ -11,7 +11,7 @@ import { SeasonConfigList, SeasonList } from '../../season';
 export class SeasonsConfigComponent implements OnInit {
 
   seasons: SeasonList[] = [];
-  seasonsConfig: SeasonConfigList[] =[];
+  seasonsConfig: SeasonDisplayList[] =[];
   displayedColumns: string[] = [
     'seasonname',
     'activemonths',
@@ -21,6 +21,7 @@ export class SeasonsConfigComponent implements OnInit {
 
   ngOnInit(): void {
     this.getConfigSeasons();
+    
   }
 
   getSeasons() {
@@ -31,7 +32,13 @@ export class SeasonsConfigComponent implements OnInit {
 
   getConfigSeasons() {
     this.choreService.getConfigSeasons().subscribe((seasonList) => {
-      this.seasonsConfig = seasonList;
+      this.seasonsConfig = seasonList.map((val) => ({
+        ...val,
+        activemonths: val.activemonths.map((val) => {
+          return this.choreService.getSeasonMonth(val)
+        }).join(', ')
+      }))
+      console.log(this.seasonsConfig)
     })
   }
 

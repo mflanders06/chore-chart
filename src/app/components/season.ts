@@ -8,3 +8,9 @@ export interface SeasonConfigList {
   seasonname: string;
   activemonths: number[];
 }
+
+export interface SeasonDisplayList {
+  id: number;
+  seasonname: string;
+  activemonths: string;
+}
