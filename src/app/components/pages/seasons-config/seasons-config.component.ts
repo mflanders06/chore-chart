@@ -38,7 +38,6 @@ export class SeasonsConfigComponent implements OnInit {
           return this.choreService.getSeasonMonth(val)
         }).join(', ')
       }))
-      console.log(this.seasonsConfig)
     })
   }
 

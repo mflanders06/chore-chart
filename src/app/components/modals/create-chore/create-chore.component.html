@@ -4,7 +4,7 @@
     <form [formGroup]="formGroup" (ngSubmit)="submitChore()">
         <mat-form-field>
             <mat-label>Job Name</mat-label>
-            <input matInput type="text" formControlName="chorename">
+            <input matInput type="text" formControlName="chorename" id="chorename">
         </mat-form-field>
         <mat-form-field>
             <mat-label>Description</mat-label>
@@ -35,6 +35,8 @@
         </mat-form-field>
         <button [disabled]="!formGroup.valid" mat-raised-button type="submit">CREATE</button>
         <button (click)="cancel()">CANCEL</button>
+        <div *ngIf="chorename?.errors?.['maxlength']">Your name is too long!!!</div>
     </form>
+
 </div>
 

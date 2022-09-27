@@ -13,7 +13,7 @@ import { ChoreService } from 'src/app/services/chore.service';
 export class CreateChoreComponent implements OnInit {
 
   formGroup = new FormGroup({
-    chorename: new FormControl(null, [Validators.required]),
+    chorename: new FormControl(null, [Validators.required, Validators.maxLength(29)]),
     description: new FormControl(),
     cycleRate: new FormControl(null, [Validators.required]),
     cycleType: new FormControl(null, [Validators.required]),  /*  1=Day, 2=Week, 3=Month, 4=Year  */
@@ -21,6 +21,8 @@ export class CreateChoreComponent implements OnInit {
   })
 
   activeSeason: SeasonList[] = []
+
+  get chorename() {return this.formGroup.get('chorename');}
 
   constructor(
     //@Inject(MAT_DIALOG_DATA),
