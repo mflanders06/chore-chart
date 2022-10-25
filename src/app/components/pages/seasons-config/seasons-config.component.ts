@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ChoreService } from 'src/app/services/chore.service';
 import { MatDialog } from '@angular/material/dialog';
-import { SeasonConfigList, SeasonDisplayList, SeasonList } from '../../season';
+import { NewSeason, SeasonConfigList, SeasonDisplayList, SeasonList } from '../../season';
+import { CreateSeasonComponent } from '../../modals/create-season/create-season.component';
 
 @Component({
   selector: 'app-seasons-config',
@@ -16,8 +17,14 @@ export class SeasonsConfigComponent implements OnInit {
     'seasonname',
     'activemonths',
   ];
+  modalHeight: string = '80%';
+  modalWidth: string = '80%';
 
-  constructor(private choreService: ChoreService) {}
+  constructor(
+    private choreService: ChoreService,
+    public dialog: MatDialog
+
+    ) {}
 
   ngOnInit(): void {
     this.getConfigSeasons();
@@ -38,6 +45,18 @@ export class SeasonsConfigComponent implements OnInit {
           return this.choreService.getSeasonMonth(val)
         }).join(', ')
       }))
+    })
+  }
+
+  newSeason() {
+    const dialogRef = this.dialog.open(CreateSeasonComponent, { height: this.modalHeight, width: this.modalWidth })
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result.seasonname){
+        this.choreService.addSeason(result).subscribe(() => {
+          this.getSeasons()
+        })
+      }
     })
   }
 

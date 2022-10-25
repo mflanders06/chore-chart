@@ -14,3 +14,8 @@ export interface SeasonDisplayList {
   seasonname: string;
   activemonths: string;
 }
+
+export interface NewSeason {
+  seasonname: string;
+  activemonths: number[];
+}

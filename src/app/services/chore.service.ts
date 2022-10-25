@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Chore, DBChoreDatum } from '../components/chore';
-import { SeasonConfigList, SeasonList } from '../components/season';
+import { NewSeason, SeasonConfigList, SeasonDisplayList, SeasonList } from '../components/season';
 
 @Injectable({
   providedIn: 'root'
@@ -56,6 +56,28 @@ export class ChoreService {
       case 12: return "December"
       default: return "Other"
     }
+  }
+
+  getSeasonMonthNumber(textMonths: string): number {
+    switch(textMonths) {
+      case "January": return 1
+      case "February": return 2
+      case "March": return 3
+      case "April": return 4
+      case "May": return 5
+      case "June": return 6
+      case "July": return 7
+      case "August": return 8
+      case "September": return 9
+      case "October": return 10
+      case "November": return 11
+      case "December": return 12
+      default: return 13
+    }
+  }
+
+  addSeason(season: NewSeason){
+    return this.http.post(`${this.backEndUrl}api/seasons`, season)
   }
 
 }

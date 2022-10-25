@@ -1,5 +1,5 @@
 <div>
-    <button mat-button-raised>New Season</button>
+    <button mat-button-raised (click)="newSeason()">New Season</button>
 </div>
 <div>
     <table mat-table [dataSource]="seasonsConfig" class="seasonConfigTable">

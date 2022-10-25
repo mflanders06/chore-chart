@@ -21,6 +21,7 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { SeasonsConfigComponent } from './components/pages/seasons-config/seasons-config.component';
+import { CreateSeasonComponent } from './components/modals/create-season/create-season.component';
 
 @NgModule({
   declarations: [
@@ -30,6 +31,7 @@ import { SeasonsConfigComponent } from './components/pages/seasons-config/season
     ChoreListComponent,
     CreateChoreComponent,
     SeasonsConfigComponent,
+    CreateSeasonComponent,
   ],
   imports: [
     BrowserModule,
