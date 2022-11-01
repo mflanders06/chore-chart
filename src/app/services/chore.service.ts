@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Chore, DBChoreDatum } from '../components/chore';
-import { NewSeason, SeasonConfigList, SeasonDisplayList, SeasonList } from '../components/season';
+import { NewSeason, SeasonConfigList, SeasonDisplayList, SeasonList, NewSeasonSubmission } from '../components/season';
 
 @Injectable({
   providedIn: 'root'
@@ -40,8 +40,8 @@ export class ChoreService {
     }
   }
 
-  getSeasonMonth(activemonths: number): string {
-    switch(activemonths) {
+  getSeasonMonth(activemonth: number): string {
+    switch(activemonth) {
       case 1: return "January"
       case 2: return "February"
       case 3: return "March"
@@ -58,8 +58,8 @@ export class ChoreService {
     }
   }
 
-  getSeasonMonthNumber(textMonths: string): number {
-    switch(textMonths) {
+  getSeasonMonthNumber(textMonth: string): number {
+    switch(textMonth) {
       case "January": return 1
       case "February": return 2
       case "March": return 3
@@ -74,6 +74,25 @@ export class ChoreService {
       case "December": return 12
       default: return 13
     }
+  }
+
+  getSeasonMonthsFromList(NewSeasonSubmission: { january: any; february: any; march: any; april: any; may: any; june: any; july: any; august: any; september: any; october: any; november: any; december: any; }) {
+    let activemonths = []
+    switch (NewSeasonSubmission) {
+      case NewSeasonSubmission.january: {activemonths.push(1)} break
+      case NewSeasonSubmission.february: {activemonths.push(2)} break
+      case NewSeasonSubmission.march: {activemonths.push(3)} break
+      case NewSeasonSubmission.april: {activemonths.push(4)} break
+      case NewSeasonSubmission.may: {activemonths.push(5)} break
+      case NewSeasonSubmission.june: {activemonths.push(6)} break
+      case NewSeasonSubmission.july: {activemonths.push(7)} break
+      case NewSeasonSubmission.august: {activemonths.push(8)} break
+      case NewSeasonSubmission.september: {activemonths.push(9)} break
+      case NewSeasonSubmission.october: {activemonths.push(10)} break
+      case NewSeasonSubmission.november: {activemonths.push(11)} break
+      case NewSeasonSubmission.december: {activemonths.push(12)} break
+    }
+    return activemonths;
   }
 
   addSeason(season: NewSeason){

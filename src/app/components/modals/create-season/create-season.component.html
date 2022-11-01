@@ -1,1 +1,80 @@
-<p>create-season works!</p>
+<div>Create New Job</div>
+
+<div>
+    <form [formGroup]="formGroup" (ngSubmit)="submitSeason()">
+        <mat-form-field>
+            <mat-label>Season Name</mat-label>
+            <input matInput type="text" formControlName="seasonname" id="seasonname">
+        </mat-form-field>
+        <br>
+        <!-- <mat-form-field>
+            <mat-label>January</mat-label>
+            <input matInput type="text" formControlName="january" id="january">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>February</mat-label>
+            <input matInput type="text" formControlName="february" id="february">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>March</mat-label>
+            <input matInput type="text" formControlName="March" id="March">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>April</mat-label>
+            <input matInput type="text" formControlName="april" id="april">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>May</mat-label>
+            <input matInput type="text" formControlName="may" id="may">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>June</mat-label>
+            <input matInput type="text" formControlName="june" id="june">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>July</mat-label>
+            <input matInput type="text" formControlName="july" id="july">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>August</mat-label>
+            <input matInput type="text" formControlName="august" id="august">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>September</mat-label>
+            <input matInput type="text" formControlName="september" id="september">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>October</mat-label>
+            <input matInput type="text" formControlName="october" id="october">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>November</mat-label>
+            <input matInput type="text" formControlName="november" id="november">
+        </mat-form-field>
+        <mat-form-field>
+            <mat-label>December</mat-label>
+            <input matInput type="text" formControlName="december" id="december">
+        </mat-form-field> -->
+
+        <section >
+            <h4>Months when the season is active:</h4>
+            <p><mat-checkbox formControlName="january">January</mat-checkbox></p>
+            <p><mat-checkbox formControlName="february">February</mat-checkbox></p>
+            <p><mat-checkbox formControlName="march">March</mat-checkbox></p>
+            <p><mat-checkbox formControlName="april">April</mat-checkbox></p>
+            <p><mat-checkbox formControlName="may">May</mat-checkbox></p>
+            <p><mat-checkbox formControlName="june">June</mat-checkbox></p>
+            <p><mat-checkbox formControlName="july">July</mat-checkbox></p>
+            <p><mat-checkbox formControlName="august">August</mat-checkbox></p>
+            <p><mat-checkbox formControlName="september">September</mat-checkbox></p>
+            <p><mat-checkbox formControlName="october">October</mat-checkbox></p>
+            <p><mat-checkbox formControlName="november">November</mat-checkbox></p>
+            <p><mat-checkbox formControlName="december">December</mat-checkbox></p>
+        </section>
+
+        <!-- <input type="checkbox" [formControl]="january"> -->
+
+        <button [disabled]="!formGroup.valid" mat-raised-button type="submit">CREATE</button>
+        <button (click)="cancel()">CANCEL</button>
+    </form>
+</div>

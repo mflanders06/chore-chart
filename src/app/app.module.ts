@@ -9,6 +9,7 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatTableModule } from '@angular/material/table';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/pages/home/home.component';
@@ -48,6 +49,7 @@ import { CreateSeasonComponent } from './components/modals/create-season/create-
     ReactiveFormsModule,
     MatSelectModule,
     MatInputModule,
+    MatCheckboxModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

@@ -13,6 +13,7 @@ export class CreateSeasonComponent implements OnInit {
 
   formGroup = new FormGroup({
     seasonname: new FormControl(null, [Validators.required]),
+
     january: new FormControl(),
     february: new FormControl(),
     march: new FormControl(),
@@ -29,7 +30,7 @@ export class CreateSeasonComponent implements OnInit {
 
   constructor(
     private dialogRef: MatDialogRef<CreateSeasonComponent>,
-    private choreService: ChoreService
+    private choreService: ChoreService,
   ) { }
 
   ngOnInit(): void {
@@ -38,7 +39,8 @@ export class CreateSeasonComponent implements OnInit {
   submitSeason() {
     const {value} = this.formGroup
     const newSeason: NewSeason = {...value}
-    
+    // console.log(value);
+    this.dialogRef.close(newSeason)
   }
 
   cancel() {
