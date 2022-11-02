@@ -76,26 +76,28 @@ export class ChoreService {
     }
   }
 
-  getSeasonMonthsFromList(NewSeasonSubmission: { january: any; february: any; march: any; april: any; may: any; june: any; july: any; august: any; september: any; october: any; november: any; december: any; }) {
-    let activemonths = []
-    switch (NewSeasonSubmission) {
-      case NewSeasonSubmission.january: {activemonths.push(1)} break
-      case NewSeasonSubmission.february: {activemonths.push(2)} break
-      case NewSeasonSubmission.march: {activemonths.push(3)} break
-      case NewSeasonSubmission.april: {activemonths.push(4)} break
-      case NewSeasonSubmission.may: {activemonths.push(5)} break
-      case NewSeasonSubmission.june: {activemonths.push(6)} break
-      case NewSeasonSubmission.july: {activemonths.push(7)} break
-      case NewSeasonSubmission.august: {activemonths.push(8)} break
-      case NewSeasonSubmission.september: {activemonths.push(9)} break
-      case NewSeasonSubmission.october: {activemonths.push(10)} break
-      case NewSeasonSubmission.november: {activemonths.push(11)} break
-      case NewSeasonSubmission.december: {activemonths.push(12)} break
-    }
+  getSeasonMonthsFromList(NewSeasonSubmission: { january: boolean; february: boolean; march: boolean; april: boolean; may: boolean; june: boolean; july: boolean; august: boolean; september: boolean; october: boolean; november: boolean; december: boolean; }) {
+    let activemonths: number[] = []
+
+      NewSeasonSubmission.january ? activemonths.push(1) : null
+      NewSeasonSubmission.february ? activemonths.push(2) : null
+      NewSeasonSubmission.march ? activemonths.push(3) : null 
+      NewSeasonSubmission.april ? activemonths.push(4) : null
+      NewSeasonSubmission.may ? activemonths.push(5) : null
+      NewSeasonSubmission.june ? activemonths.push(6) : null
+      NewSeasonSubmission.july ? activemonths.push(7) : null
+      NewSeasonSubmission.august ? activemonths.push(8) : null
+      NewSeasonSubmission.september ? activemonths.push(9) : null
+      NewSeasonSubmission.october ? activemonths.push(10) : null
+      NewSeasonSubmission.november ? activemonths.push(11) : null
+      NewSeasonSubmission.december ? activemonths.push(12) : null
+
+    console.log('active months in service', activemonths)
     return activemonths;
   }
 
   addSeason(season: NewSeason){
+
     return this.http.post(`${this.backEndUrl}api/seasons`, season)
   }
 
