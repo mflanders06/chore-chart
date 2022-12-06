@@ -52,12 +52,12 @@ export class SeasonsConfigComponent implements OnInit {
     const dialogRef = this.dialog.open(CreateSeasonComponent, { height: this.modalHeight, width: this.modalWidth })
 
     dialogRef.afterClosed().subscribe(result => {
-      console.log('this is result', result)
+      //console.log('this is result', result)
       if(result.seasonname){
         let newSeason: NewSeason = {seasonname: '', activemonths: []};
         newSeason.seasonname = result.seasonname
         newSeason.activemonths.push( ...this.choreService.getSeasonMonthsFromList(result) );
-        console.log('this is second result', result, 'and this is the newSeason', newSeason);
+        //console.log('this is second result', result, 'and this is the newSeason', newSeason);
         this.choreService.addSeason(newSeason).subscribe(() => {
           this.getSeasons()
         })
